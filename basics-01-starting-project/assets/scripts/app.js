@@ -2,10 +2,15 @@ const defaultResult = 0;
 let currentResult = defaultResult
 
 
+function getUserNumberInput() {
+    return parseInt(userInput.value)
+}
 
 const add = () => {
-    currentResult = currentResult + userInput.value
-    outputResult(currentResult, '')
+    const enteredNumber = getUserNumberInput()
+    const calcDescription = `${currentResult} + ${enteredNumber}`
+    currentResult = currentResult + enteredNumber
+    outputResult(currentResult, calcDescription)
 }
 
 
