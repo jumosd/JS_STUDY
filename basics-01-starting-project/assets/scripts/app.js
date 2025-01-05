@@ -27,34 +27,48 @@ function writeLog(
     console.log(logEntries)
 }
 
-function add() {
+function calculateResult(calculationType) {
     const enteredNumber = getUserNumberInput()
-    const initalResult = currentResult
-    currentResult += enteredNumber
-    createAndWriteOutput("+", initalResult, enteredNumber)
-    writeLog("ADD", initalResult, enteredNumber, currentResult)
+
+    if (calculationType !== "ADD" &&
+        calculationType !== "SUBTRACT" &&
+        calculationType !== "MULTIPLY" &&
+        calculationType !== "DIVIDE" &&
+        enteredNumber === 0
+    ) {
+
+
+        const initalResult = currentResult
+        let mathOperate
+        if (calculationType === "ADD") {
+            currentResult += enteredNumber
+            mathOperate = "+"
+        } else if (calculationType == "SUBTRACT") {
+            currentResult -= enteredNumber
+            mathOperate = "-"
+        } else if (calculationType == "MULTIPLY") {
+            currentResult *= enteredNumber
+            mathOperate = "*"
+        } else if (calculationType == "DIVIDE") {
+            currentResult /= enteredNumber
+            mathOperate = "/"
+        }
+        createAndWriteOutput(mathOperate, initalResult, enteredNumber)
+        writeLog(calculationType, initalResult, enteredNumber, currentResult)
+    }
 }
 
+function add() {
+    calculateResult("ADD")
+}
 function subtract() {
-    const enteredNumber = getUserNumberInput()
-    const initalResult = currentResult
-    currentResult -= enteredNumber
-    createAndWriteOutput("-", initalResult, enteredNumber)
-    writeLog("SUBTRACT", initalResult, enteredNumber, currentResult)
+    calculateResult("SUBTRACT")
 }
 function multiply() {
-    const enteredNumber = getUserNumberInput()
-    const initalResult = currentResult
-    currentResult *= enteredNumber
-    createAndWriteOutput("*", initalResult, enteredNumber)
-    writeLog("MULTIPLY", initalResult, enteredNumber, currentResult)
+    calculateResult("MULTIPLY")
 }
 function divide() {
-    const enteredNumber = getUserNumberInput()
-    const initalResult = currentResult
-    currentResult /= enteredNumber
-    createAndWriteOutput("/", initalResult, enteredNumber)
-    writeLog("DIVIDE", initalResult, enteredNumber, currentResult)
+    calculateResult("DIVIDE")
 }
 
 
