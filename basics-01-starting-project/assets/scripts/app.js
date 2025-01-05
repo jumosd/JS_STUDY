@@ -35,6 +35,7 @@ function calculateResult(calculationType) {
         calculationType !== "MULTIPLY" &&
         calculationType !== "DIVIDE" &&
         enteredNumber === 0
+        // !enteredNumber 이렇게도 가능
     ) {
 
 
