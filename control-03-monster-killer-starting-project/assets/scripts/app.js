@@ -9,6 +9,11 @@ let hasBonusLife = true
 
 adjustHealthBars(chooseMaxLife); //html에최대 체력바 초기화 하는 함수
 
+function reset() {
+    currentMonsterHealth = chooseMaxLife; //몬스터의 체력을 초기화
+    currentPlayerHealth = chooseMaxLife;  //플레이어의 체력을 초기화
+    resetGame(chooseMaxLife)
+}
 function endRound() {
     let initialPlayerHealth = currentPlayerHealth
     const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE)
@@ -24,10 +29,13 @@ function endRound() {
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert("이겼다!!")
+        reset()
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert("졌다 ")
+        reset()
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
         alert("비겼어요")
+        reset()
     }
 }
 
