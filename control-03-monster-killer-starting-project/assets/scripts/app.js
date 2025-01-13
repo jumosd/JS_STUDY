@@ -2,6 +2,10 @@ const ATTACK_VALUE = 10; //플레이어의 공격력 전역적으로 사용할�
 const STRONG_ATTACK_VALUE = 20; //강공격 추가
 const MONSTER_ATTACK_VALUE = 14; //몬스터 공격력
 const HEAL_VALUE = 20
+
+const MODE_ATTACK = "ATTACK"
+const MODE_STRONG_ATTACK = "STRONG_ATTACK"
+
 const enteredValue = parseInt(prompt("체력을 설정해주세요 (캐릭터,몬스터둘다적용)")); //몬스터와 플레이어의 최대체력임 
 let chooseMaxLife = enteredValue
 let currentMonsterHealth = chooseMaxLife; //몬스터의 체력을 초기화
@@ -46,9 +50,9 @@ function endRound() {
 
 function attackMonster(mode) {
     let maxDamage
-    if (mode === "ATTACK") {
+    if (mode === MODE_ATTACK) {
         maxDamage = ATTACK_VALUE
-    } else if (mode === "STRONG_ATTACK") {
+    } else if (mode === MODE_STRONG_ATTACK) {
         maxDamage = STRONG_ATTACK_VALUE
     }
     const damage = dealMonsterDamage(maxDamage)
@@ -58,11 +62,11 @@ function attackMonster(mode) {
 
 //공격함수
 function attackHandler() {
-    attackMonster("ATTACK")
+    attackMonster(MODE_ATTACK)
 }
 //강공격함수
 function strongAttackHandler() {
-    attackMonster("STRONG_ATTACK")
+    attackMonster(MODE_STRONG_ATTACK)
 }
 //힐함수
 function healHandler() {
